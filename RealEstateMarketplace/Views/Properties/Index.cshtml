@@ -1,0 +1,84 @@
+﻿@model IEnumerable<RealEstateMarketplace.Models.Property>
+
+@{
+    ViewData["Title"] = "Properties";
+}
+
+<h1>Properties</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        Create New Property
+    </a>
+</p>
+
+<table class="table table-bordered align-middle">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Property Type</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var property in Model)
+        {
+            <tr>
+
+                <td>
+                    @if (!string.IsNullOrEmpty(property.ImagePath))
+                    {
+                        <img src="@property.ImagePath"
+                             alt="@property.Title"
+                             style="width:120px; height:80px; object-fit:cover; border-radius:8px;" />
+                    }
+                    else
+                    {
+                        <span class="text-muted">No Image</span>
+                    }
+                </td>
+
+                <td>@property.Title</td>
+
+                <td>
+                    @property.Price.ToString("N0")
+                </td>
+
+                <td>@property.Location</td>
+
+                <td>@property.PropertyType</td>
+
+                <td>@property.Bedrooms</td>
+
+                <td>@property.Bathrooms</td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@property.Id"
+                       class="btn btn-sm btn-info">
+                        Details
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@property.Id"
+                       class="btn btn-sm btn-warning">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@property.Id"
+                       class="btn btn-sm btn-danger">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

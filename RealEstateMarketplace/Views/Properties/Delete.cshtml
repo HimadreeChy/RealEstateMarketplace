@@ -1,0 +1,63 @@
+﻿@model RealEstateMarketplace.Models.Property
+
+@{
+    ViewData["Title"] = "Delete Property";
+}
+
+<h1>Delete Property</h1>
+
+<div class="alert alert-danger">
+    <strong>Are you sure you want to delete this property?</strong>
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        <h3>@Model.Title</h3>
+
+        <p>
+            <strong>Description:</strong>
+            @Model.Description
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            @Model.Price.ToString("N0")
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            @Model.Location
+        </p>
+
+        <p>
+            <strong>Property Type:</strong>
+            @Model.PropertyType
+        </p>
+
+        <p>
+            <strong>Bedrooms:</strong>
+            @Model.Bedrooms
+        </p>
+
+        <p>
+            <strong>Bathrooms:</strong>
+            @Model.Bathrooms
+        </p>
+
+        <form asp-action="Delete" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <button type="submit" class="btn btn-danger">
+                Yes, Delete
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+</div>

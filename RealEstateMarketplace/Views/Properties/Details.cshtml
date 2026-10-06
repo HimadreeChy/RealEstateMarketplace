@@ -1,0 +1,89 @@
+﻿@model RealEstateMarketplace.Models.Property
+
+@{
+    ViewData["Title"] = "Property Details";
+}
+
+<h1>Property Details</h1>
+
+<hr />
+
+<div class="card">
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img src="@Model.ImagePath"
+             class="card-img-top"
+             alt="@Model.Title"
+             style="height:400px; object-fit:cover;" />
+    }
+
+    <div class="card-body">
+
+        <h2 class="card-title">@Model.Title</h2>
+
+        <p class="card-text">
+            @Model.Description
+        </p>
+
+        <hr />
+
+        <dl class="row">
+
+            <dt class="col-sm-3">
+                Price
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Price.ToString("N0")
+            </dd>
+
+            <dt class="col-sm-3">
+                Location
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Location
+            </dd>
+
+            <dt class="col-sm-3">
+                Property Type
+            </dt>
+            <dd class="col-sm-9">
+                @Model.PropertyType
+            </dd>
+
+            <dt class="col-sm-3">
+                Bedrooms
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Bedrooms
+            </dd>
+
+            <dt class="col-sm-3">
+                Bathrooms
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Bathrooms
+            </dd>
+
+            <dt class="col-sm-3">
+                Created At
+            </dt>
+            <dd class="col-sm-9">
+                @Model.CreatedAt.ToString("dd MMM yyyy")
+            </dd>
+
+        </dl>
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.Id"
+           class="btn btn-primary">
+            Edit
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back to List
+        </a>
+
+    </div>
+</div>
